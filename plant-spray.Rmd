@@ -1,0 +1,33 @@
+---
+title: "Plant"
+author: "Maxwel Coura Oliveira"
+date: "10/28/2020"
+output: html_document
+---
+
+
+```{r}
+knitr::opts_chunk$set(
+  message = TRUE,
+  warning = TRUE,
+  eval = TRUE
+)
+```
+
+```{r include=FALSE}
+library(tidyverse)
+```
+
+```{r}
+data <- read.csv("data.csv")
+```
+
+```{r}
+data %>% 
+  pivot_longer(cols = photo_1:photo_3, names_to = "photo", 
+               values_to = "photo_value") %>% 
+  pivot_longer(cols = commonragweed:control_overall_21DAA, names_to = "weed",
+               values_to = "control") %>% 
+  janitor::clean_names()
+```
+
